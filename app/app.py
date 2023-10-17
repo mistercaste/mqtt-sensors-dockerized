@@ -4,6 +4,7 @@ import paho.mqtt.client as mqtt
 import time
 import json
 import Adafruit_DHT as adafruit_dht
+import Adafruit_BMP.BMP085 as adafruit_bmp
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 SENSOR_TYPE = os.getenv("SENSOR_TYPE", "DHT22").upper()
@@ -60,6 +61,7 @@ if __name__ == '__main__':
 
     configure_logging()
     dht_sensor = resolve_sensor_type()
+    bmp_sensor = adafruit_bmp
 
     if MQTT_HOSTNAME is None or MQTT_PORT is None:
         logging.error("Could not acquire MQTT broker connection parameters...")
@@ -79,12 +81,14 @@ if __name__ == '__main__':
         try:
 
             humidity, temperature = adafruit_dht.read_retry(dht_sensor, SENSOR_PIN)
+            pressure = adafruit_bmp.read_pressure()
 
-            if humidity is not None and temperature is not None:
+            if humidity is not None and temperature is not None and pressure is not None:
 
-                logging.debug(f"Sensor values measured - temperature '{temperature}', humidity '{humidity}''")
+                logging.debug(f"Sensor values measured - temperature '{temperature}', humidity '{humidity}', pressure '{pressure}''")
                 data = {'temperature': round(temperature, DECIMAL_POINTS),
-                        'humidity': round(humidity, DECIMAL_POINTS)}
+                        'humidity': round(humidity, DECIMAL_POINTS),
+                        'pressure': round(pressure, DECIMAL_POINTS)}
 
                 logging.debug(f"Publishing data to topic - '{MQTT_TOPIC}'")
                 client.publish(MQTT_TOPIC, json.dumps(data))
