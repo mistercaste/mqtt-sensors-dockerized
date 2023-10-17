@@ -1,6 +1,0 @@
-#!/bin/bash
-
-docker build \
-    --platform arm \
-    -f $DOCKERFILE_PATH \
-    -t $IMAGE_NAME .
