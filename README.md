@@ -1,9 +1,9 @@
-# dht-mqtt-dockerized
-A DHT22/DHT11 fully customisable python application running in a docker container to send temperature and humidty sensor values in a JSON format to a MQTT broker.
-The code can be found on [Github](https://github.com/grigal/dht-mqtt-dockerized) and on [Docker Hub](https://hub.docker.com/r/tomasgrigaliunas/dht-mqtt-dockerized).
+# mqtt-sensors-dockerized
+A fully customisable python application for DHT22/DHT11 and BMP085 sensors, running in a docker container to send temperature and humidty sensor values in a JSON format to a MQTT broker.
+The container can be found on [Docker Hub](https://hub.docker.com/r/mistercaste/mqtt-sensors-dockerized).
 
 ## Initial setup
-In terms of hardware, you'll need a DHT11 or DHT22 temperature/humidity sensor connected to a Raspberry Pi. Examples can be found online depending on your specific models, one I would suggest would be [this one](https://www.instructables.com/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/).
+In terms of hardware, you'll need a DHT11 or DHT22 temperature/humidity sensor, as well as a BMP085 pressure sensor connected to a Raspberry Pi. Examples can be found online depending on your specific models, one I would suggest would be [this one](https://www.instructables.com/Raspberry-Pi-Tutorial-How-to-Use-the-DHT-22/).
 
 Additionally, you'll need to have [docker installed in your Raspberry Pi](https://phoenixnap.com/kb/docker-on-raspberry-pi).
 
@@ -36,36 +36,6 @@ docker run \
     -e MQTT_PASSWORD=''
     -e LOG_LEVEL='info'
     tomasgrigaliunas/dht-mqtt-dockerized
-```
-
-
-### Using docker-compose
-Requires docker-compose to be [installed on your Raspberry Pi](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl).
-
-Set a available configuration for the command in the `Available variables` section below and add the following to your `docker-compose.yml` file and run the `docker-compose up -d` command.
-```
-dht-mqtt-dockerized:
-    image: tomasgrigaliunas/dht-mqtt-dockerized
-    container_name: dht-mqtt-dockerized
-    restart: unless-stopped
-    network_mode: host
-    privileged: true
-    environment:
-        SENSOR_PIN: '14'
-        SENSOR_TYPE: 'dht22'
-        SENSOR_CHECK_INTERVAL: '60'
-        SENSOR_DECIMAL_DIGITS: '4'
-        MQTT_HOSTNAME: localhost
-        MQTT_PORT: 1883
-        MQTT_TIMEOUT: 60
-        MQTT_TOPIC: 'sensor/value'
-        MQTT_CLIENT_ID: 'dht22-mqtt'
-        CLIENT_CLEAN_SESSION: 'False'
-        CLIENT_TLS_INSECURE: 'False'
-        MQTT_CLIENT_QOS: '4'
-        MQTT_USERNAME: ''
-        MQTT_PASSWORD: ''
-        LOG_LEVEL: 'info'
 ```
 
 ### Available variables
