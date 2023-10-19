@@ -1,5 +1,4 @@
 FROM arm32v7/python:3.9 AS builder
-USER root
 RUN mkdir /install
 WORKDIR /install
 COPY app/requirements.txt .
