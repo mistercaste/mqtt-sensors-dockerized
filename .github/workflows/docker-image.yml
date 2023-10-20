@@ -2,22 +2,6 @@ name: MQTT Sensors
 
 on:
   push:
-    branches:
-      - main
-
-jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --platform "linux/arm64/v8" --tag ${{secrets.DOCKER_USER}}/mqtt-sensors-dockerized:main_$GITHUB_RUN_NUMBER
-
-on:
-  push:
     tags:
       - 'v*.*.*'
 
