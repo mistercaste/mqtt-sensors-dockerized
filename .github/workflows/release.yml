@@ -1,4 +1,4 @@
-name: MQTT Sensors
+name: MQTT Sensors Release
 
 on:
   push:
