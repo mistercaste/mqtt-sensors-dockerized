@@ -1,5 +1,5 @@
 FROM arm32v7/python:3.9 AS builder
-RUN mkdir /install/
+RUN mkdir /install
 WORKDIR /install
 COPY app/requirements.txt .
 RUN pip install --prefix=/install -r requirements.txt
