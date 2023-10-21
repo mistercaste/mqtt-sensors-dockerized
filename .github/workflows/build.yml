@@ -16,4 +16,4 @@ jobs:
     - name: Available platforms
       run: echo $
     - name: Build the Docker image
-      run: docker buildx build . --file Dockerfile --platform linux/arm64/v7 --tag ${{secrets.DOCKER_USER}}/mqtt-sensors-dockerized:main_$GITHUB_RUN_NUMBER
+      run: docker buildx build . --platform linux/arm64/v7 --tag ${{secrets.DOCKER_USER}}/mqtt-sensors-dockerized:main_$GITHUB_RUN_NUMBER
