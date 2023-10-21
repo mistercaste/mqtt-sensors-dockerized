@@ -26,4 +26,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: false
-          tags: mistercaste/mqtt-sensors-dockerized:main_$GITHUB_RUN_NUMBER
+          tags: ${{ secrets.DOCKER_USER }}/mqtt-sensors-dockerized:main_${{ GITHUB_RUN_NUMBER }}
