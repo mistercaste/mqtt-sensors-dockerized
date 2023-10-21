@@ -25,5 +25,5 @@ jobs:
         with:
           context: .
           platforms: linux/arm64
-          push: false
+          push: true
           tags: ${{ secrets.DOCKER_USER }}/mqtt-sensors-dockerized:latest
