@@ -56,5 +56,12 @@ docker run \
 - `MQTT_PASSWORD` - Set a password for broker authentication (Default ``).
 - `LOG_LEVEL` - Sets the verbosity of the logs publishd to the console, available options are `debug`, `info`, `warn`, `error` (Default `info`).
 
+### Sample
+Sample execution running against a Mosquitto broker on `nas.home`, topic `sensor/value`, every 2 seconds (`SENSOR_CHECK_INTERVAL`). Your sensor must be reporting its data to the PIN 14 (check your Raspberry PI docs)
+
+```
+docker run --rm --name dht-mqtt-dockerized --net=host --privileged -e SENSOR_PIN=14 -e SENSOR_TYPE='dht11' -e SENSOR_CHECK_INTERVAL=2 -e SENSOR_DECIMAL_DIGITS=4 -e MQTT_HOSTNAME=nas.home -e MQTT_PORT=1883 -e MQTT_TIMEOUT=10 -e MQTT_TOPIC='sensor/value' -e MQTT_CLIENT_ID='dht-mqtt' -e CLIENT_CLEAN_SESSION='False' -e CLIENT_TLS_INSECURE='False' -e MQTT_CLIENT_QOS='4' -e MQTT_USERNAME=<USERNAME> -e MQTT_PASSWORD=<PASSWORD> -e LOG_LEVEL='info' mistercaste/mqtt-sensors-dockerized:latest
+```
+
 ## License
 Eclipse Public License 2.0
