@@ -1,4 +1,4 @@
-name: MQTT Sensors Build (main)
+name: MQTT Sensors CI
 
 on:
   push:
