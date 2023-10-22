@@ -3,7 +3,7 @@ name: MQTT Sensors Release
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - '\d+.\d+.\d+'
 
 jobs:
   docker:
