@@ -17,6 +17,8 @@ Pre-requisite is to enable the I2C port on the Raspberry PI
 sudo raspi-config nonint do_i2c 0
 ```
 
+This can be performed on GUI as well, by entering `raspi-config` &rarr; `Interface Options` &rarr; `I2C`
+
 ### As a standalone container
 See the available configurations for the command in the `Available variables` section below and run the command:
 
