@@ -9,6 +9,11 @@ Additionally, you'll need to have [docker installed in your Raspberry Pi](https:
 
 If you already have everything setup, continue to the next section.
 
+## Wiring
+
+![IMG_20231024_190511](https://github.com/mistercaste/mqtt-sensors-dockerized/assets/2144343/3d187917-b785-4af6-a2e5-3596b365190f)
+![IMG_20231024_190857](https://github.com/mistercaste/mqtt-sensors-dockerized/assets/2144343/7a9f75aa-9562-406a-8254-5aa3dd5f2693)
+
 ## Running docker container
 
 Pre-requisite is to enable the I2C port on the Raspberry PI
