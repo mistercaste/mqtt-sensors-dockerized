@@ -11,6 +11,12 @@ If you already have everything setup, continue to the next section.
 
 ## Running docker container
 
+Pre-requisite is to enable the I2C port on the Raspberry PI
+
+```
+sudo raspi-config nonint do_i2c 0
+```
+
 ### As a standalone container
 See the available configurations for the command in the `Available variables` section below and run the command:
 
