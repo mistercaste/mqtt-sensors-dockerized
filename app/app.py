@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
                 logging.debug(f"Sensor values measured - temperature '{temperature}', humidity '{humidity}', pressure '{pressure}''")
                 data = {'temperature': round(temperature, DECIMAL_POINTS),
-                        'humidity': round(humidity, DECIMAL_POINTS),
+                        'humidity_percentage': round(humidity, DECIMAL_POINTS),
                         'pressure': round(pressure, DECIMAL_POINTS)}
 
                 logging.debug(f"Publishing data to topic - '{MQTT_TOPIC}'")
