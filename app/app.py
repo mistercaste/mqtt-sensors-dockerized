@@ -80,8 +80,9 @@ if __name__ == '__main__':
     while True:
         try:
 
-            humidity, temperature = adafruit_dht.read_retry(dht_sensor, SENSOR_PIN)
+            humidity, temperature_dht11 = adafruit_dht.read_retry(dht_sensor, SENSOR_PIN)
             pressure = bmp_sensor.read_pressure()
+            temperature = bmp_sensor.read_temperature()
 
             if humidity is not None and temperature is not None and pressure is not None:
 
