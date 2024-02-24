@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     configure_logging()
     dht_sensor = resolve_sensor_type()
-    bmp_sensor = BMP085.BMP085()
+    bmp_sensor = BMP085.BMP085(busnum=1)
 
     if MQTT_HOSTNAME is None or MQTT_PORT is None:
         logging.error("Could not acquire MQTT broker connection parameters...")
